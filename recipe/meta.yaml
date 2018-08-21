@@ -1,27 +1,20 @@
-{% set name = "jbig" %}
 {% set version = "2.1" %}
-{% set sha256 = "de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932" %}
 
 package:
-  name: {{ name|lower }}
+  name: jbig
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-  patches:
-    # Remove -Wno-unused-result (for compatibility with old gcc),
-    # and add -fPIC (to allow shared libraries to use this build).
-    - Makefile.patch
+  sha256: de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('c') }}
 
 test:
   commands:
@@ -44,3 +37,5 @@ about:
 extra:
   recipe-maintainers:
     - nehaljwani
+    - mingwandroid
+    - ocefpaf
