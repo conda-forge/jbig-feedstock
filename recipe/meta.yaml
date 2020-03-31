@@ -15,8 +15,8 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - cmake  # [win]
+    - {{ compiler('c') }}  # [not win]
+    - vs2017_win-64        # [win]
 
 test:
   commands:
