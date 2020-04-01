@@ -1,3 +1,4 @@
+# Adopted from https://github.com/microsoft/vcpkg/blob/master/ports/jbigkit/CMakeLists.txt
 cmake_minimum_required(VERSION 3.4)
 project(libjbig C)
 
