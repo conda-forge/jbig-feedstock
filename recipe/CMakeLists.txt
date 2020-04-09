@@ -13,10 +13,10 @@ set(HEADERS
     "libjbig/jbig85.h"
 )
 
-add_library(libjbig ${SOURCES})
+add_library(jbig ${SOURCES})
 
 install(
-    TARGETS libjbig
+    TARGETS jbig
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
