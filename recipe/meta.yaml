@@ -20,7 +20,7 @@ requirements:
 test:
   commands:
     - test -f $PREFIX/lib/libjbig.a  # [not win]
-    - if not exist %LIBRARY_PREFIX%\\bin\\libjbig.dll exit 1  # [win]
+    - if not exist %LIBRARY_PREFIX%\\bin\\jbig.dll exit 1  # [win]
 
 about:
   home: https://www.cl.cam.ac.uk/~mgk25/jbigkit
