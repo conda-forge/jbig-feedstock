@@ -5,12 +5,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-{{ version }}.tar.gz
-  sha256: de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932
+  - url: https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-{{ version }}.tar.gz
+    sha256: de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932
+  - path: CMakeLists.txt
 
 build:
-  number: 2001
-  skip: true  # [win]
+  number: 2002
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
@@ -18,7 +19,8 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/lib/libjbig.a
+    - test -f $PREFIX/lib/libjbig.a  # [not win]
+    - if not exist %LIBRARY_PREFIX%\\bin\\jbig.dll exit 1  # [win]
 
 about:
   home: https://www.cl.cam.ac.uk/~mgk25/jbigkit
@@ -39,3 +41,4 @@ extra:
     - nehaljwani
     - mingwandroid
     - ocefpaf
+    - seanyen
