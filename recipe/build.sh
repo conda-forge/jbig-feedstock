@@ -10,7 +10,9 @@ LDFLAGS="${LDFLAGS} -L${PWD}/libjbig" \
   make -e all
 
 # Test
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
 make test
+fi
 
 # Install
 mkdir -p "${PREFIX}/lib" "${PREFIX}/include"
