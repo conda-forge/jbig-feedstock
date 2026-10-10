@@ -1,4 +1,4 @@
-{% set version = "2.1" %}
+{% set version = "2.2" %}
 
 package:
   name: jbig
@@ -6,16 +6,17 @@ package:
 
 source:
   - url: https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-{{ version }}.tar.gz
-    sha256: de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932
+    sha256: 3302109c93b7befbffa3cfe8bceb4355f19dea0ee7dcb5f33710b1648bf6645c
   - path: CMakeLists.txt
 
 build:
-  number: 2003
+  number: 0
   skip: true  # [win and vc<14]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - make                 # [unix]
 
 test:
