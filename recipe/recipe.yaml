@@ -1,0 +1,51 @@
+schema_version: 1
+
+context:
+  version: "2.2"
+
+package:
+  name: jbig
+  version: ${{ version }}
+
+source:
+  - url: https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-${{ version }}.tar.gz
+    sha256: 3302109c93b7befbffa3cfe8bceb4355f19dea0ee7dcb5f33710b1648bf6645c
+  - path: CMakeLists.txt
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - if: unix
+      then: make
+
+tests:
+  - package_contents:
+      files:
+        - if: unix
+          then: lib/libjbig.a
+          else: Library/bin/jbig.dll
+
+about:
+  homepage: https://www.cl.cam.ac.uk/~mgk25/jbigkit
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: COPYING
+  summary: 'Implementation of the JBIG1 data compression standard'
+
+  description: |
+    JBIG-KIT provides a portable library of compression and decompression
+    functions with a documented interface that you can include very easily
+    into your image or document processing software.
+  documentation: https://www.cl.cam.ac.uk/~mgk25/jbigkit/
+  repository: https://www.cl.cam.ac.uk/~mgk25/git/jbigkit/
+
+extra:
+  recipe-maintainers:
+    - nehaljwani
+    - mingwandroid
+    - ocefpaf
+    - seanyen
