@@ -17,7 +17,6 @@ JBIG-KIT provides a portable library of compression and decompression
 functions with a documented interface that you can include very easily
 into your image or document processing software.
 
-
 Current build status
 ====================
 
